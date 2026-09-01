@@ -1,0 +1,88 @@
+{{ 'ls-sections.css' | asset_url | stylesheet_tag }}
+{%- if settings.predictive_search_enabled -%}
+  <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<div class="ls-utility">
+  <div class="page-width ls-utility__inner">
+    <div class="ls-utility__search">
+      {%- if settings.predictive_search_enabled -%}
+        <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
+      {%- else -%}
+        <search-form>
+      {%- endif -%}
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+        <div class="field">
+          <input
+            class="search__input field__input"
+            id="ls-utility-search-input"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ section.settings.search_placeholder }}"
+            {%- if settings.predictive_search_enabled -%}
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results"
+              aria-controls="predictive-search-results"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            {%- endif -%}
+          >
+          <label class="field__label" for="ls-utility-search-input">{{ section.settings.search_placeholder }}</label>
+          <input type="hidden" name="options[prefix]" value="last">
+          <button
+            type="reset"
+            class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+            aria-label="{{ 'general.search.reset' | t }}"
+          >
+            <svg class="icon icon-close" aria-hidden="true" focusable="false">
+              <use xlink:href="#icon-reset">
+            </svg>
+          </button>
+          <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+            <svg class="icon icon-search" aria-hidden="true" focusable="false">
+              <use xlink:href="#icon-search">
+            </svg>
+          </button>
+        </div>
+        {%- if settings.predictive_search_enabled -%}
+          <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+            <div class="predictive-search__loading-state">
+              <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
+          </div>
+          <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+        {%- endif -%}
+      </form>
+      {%- if settings.predictive_search_enabled -%}
+        </predictive-search>
+      {%- else -%}
+        </search-form>
+      {%- endif -%}
+    </div>
+    <div class="ls-utility__contact">
+      <span class="ls-utility__text">{{ section.settings.text }}</span>
+      <a class="ls-utility__phone" href="tel:{{ section.settings.phone_tel }}">{{ section.settings.phone_display }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LS Utility bar",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search products" },
+    { "type": "text", "id": "text", "label": "Text", "default": "For questions or to place an order" },
+    { "type": "text", "id": "phone_display", "label": "Phone (shown)", "default": "866-9-LAGUNA (952-4862)" },
+    { "type": "text", "id": "phone_tel", "label": "Phone (tel: digits)", "default": "8669524862" }
+  ]
+}
+{% endschema %}
