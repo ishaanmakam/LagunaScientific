@@ -1,0 +1,63 @@
+{{ 'ls-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ls-motion.js' | asset_url }}" defer="defer"></script>
+
+<section class="ls-hero ls-hero--{{ section.settings.tone }}">
+  <div class="ls-hero__inner page-width">
+    <div class="ls-hero__panel">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ls-hero__eyebrow ls-up" style="--d:0">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h1 class="ls-hero__title ls-up" style="--d:1">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}
+        <div class="ls-hero__text ls-up" style="--d:2">{{ section.settings.text }}</div>
+      {%- endif -%}
+      <div class="ls-hero__actions ls-up" style="--d:3">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="ls-btn ls-btn--accent">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 }}" class="ls-btn ls-btn--ghost">{{ section.settings.button_label_2 }}</a>
+        {%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <ul class="ls-hero__chips ls-up" style="--d:4">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>{{ block.settings.label }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+    <div class="ls-hero__media" style="--focus: {{ section.settings.image_focus }}">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '900,1200,1800', sizes: '(min-width: 990px) 60vw, 100vw', alt: '' }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+      <span class="ls-hero__accent" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LS Split hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "image_focus", "label": "Image focus (CSS object-position)", "default": "100% 50%", "info": "100% 50% shows the right side of the image and hides text baked into the left." },
+    { "type": "select", "id": "tone", "label": "Panel colour", "default": "navy", "options": [ { "value": "navy", "label": "Navy" }, { "value": "light", "label": "Light" } ] },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Lab supplies · PPE · Equipment" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Everything your lab orders, from one supplier." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Cell culture plastics, pipette tips, tubes, gloves, and Benchmark Scientific instruments. Case quantities and quotes for research, clinical, and industrial labs.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button 1 label", "default": "Shop gloves & PPE" },
+    { "type": "url", "id": "button_link", "label": "Button 1 link" },
+    { "type": "text", "id": "button_label_2", "label": "Button 2 label", "default": "Browse all products" },
+    { "type": "url", "id": "button_link_2", "label": "Button 2 link" }
+  ],
+  "blocks": [
+    { "type": "chip", "name": "Chip", "limit": 5, "settings": [ { "type": "text", "id": "label", "label": "Label", "default": "Volume pricing" } ] }
+  ],
+  "presets": [ { "name": "LS Split hero" } ]
+}
+{% endschema %}

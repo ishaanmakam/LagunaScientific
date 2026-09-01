@@ -1,0 +1,35 @@
+{{ 'ls-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ls-motion.js' | asset_url }}" defer="defer"></script>
+<section class="ls-stats ls-stats--{{ section.settings.tone }}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}<h2 class="ls-h2 ls-stats__heading ls-reveal">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="ls-stats__grid">
+      {%- for block in section.blocks -%}
+        <div class="ls-stat ls-reveal" style="--d:{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="ls-stat__num">
+            {%- if block.settings.number != blank -%}<span data-count="{{ block.settings.number }}">0</span>{%- endif -%}
+            {%- if block.settings.suffix != blank -%}<span class="ls-stat__suffix">{{ block.settings.suffix }}</span>{%- endif -%}
+          </div>
+          <div class="ls-stat__label">{{ block.settings.label }}</div>
+          {%- if block.settings.text != blank -%}<div class="ls-stat__text">{{ block.settings.text }}</div>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "LS Stats band",
+  "tag": "section",
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading" },
+    { "type": "select", "id": "tone", "label": "Colour", "default": "navy", "options": [ { "value": "navy", "label": "Navy" }, { "value": "green", "label": "Green" }, { "value": "light", "label": "Light" } ] }
+  ],
+  "blocks": [ { "type": "stat", "name": "Stat", "limit": 4, "settings": [
+    { "type": "text", "id": "number", "label": "Number (counts up)", "default": "600" },
+    { "type": "text", "id": "suffix", "label": "Suffix", "default": "+" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Products" },
+    { "type": "text", "id": "text", "label": "Small text" } ] } ],
+  "presets": [ { "name": "LS Stats band" } ]
+}
+{% endschema %}

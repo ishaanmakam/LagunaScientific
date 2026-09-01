@@ -1,0 +1,26 @@
+{{ 'ls-sections.css' | asset_url | stylesheet_tag }}
+<div class="ls-marquee ls-marquee--{{ section.settings.tone }}" aria-hidden="true">
+  <div class="ls-marquee__track" style="--speed: {{ section.settings.speed }}s">
+    {%- for i in (1..2) -%}
+      <div class="ls-marquee__group">
+        {%- for block in section.blocks -%}
+          <span class="ls-marquee__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{{ block.settings.label }}</a>{%- else -%}{{ block.settings.label }}{%- endif -%}
+          </span><span class="ls-marquee__dot">•</span>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "LS Ticker",
+  "tag": "section",
+  "settings": [
+    { "type": "select", "id": "tone", "label": "Colour", "default": "green", "options": [ { "value": "green", "label": "Green" }, { "value": "navy", "label": "Navy" }, { "value": "light", "label": "Light grey" } ] },
+    { "type": "range", "id": "speed", "label": "Loop duration (s)", "min": 15, "max": 60, "step": 5, "default": 30 }
+  ],
+  "blocks": [ { "type": "item", "name": "Item", "settings": [ { "type": "text", "id": "label", "label": "Label", "default": "Pipette tips" }, { "type": "url", "id": "link", "label": "Link" } ] } ],
+  "presets": [ { "name": "LS Ticker" } ]
+}
+{% endschema %}

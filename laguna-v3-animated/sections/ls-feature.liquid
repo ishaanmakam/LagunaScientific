@@ -1,0 +1,59 @@
+{{ 'ls-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ls-motion.js' | asset_url }}" defer="defer"></script>
+{%- assign p = section.settings.product -%}
+<section class="ls-feature ls-feature--{{ section.settings.tone }} ls-feature--{{ section.settings.layout }}">
+  <div class="page-width ls-feature__grid">
+    <div class="ls-feature__media ls-reveal ls-reveal--{% if section.settings.layout == 'image_right' %}right{% else %}left{% endif %}">
+      <div class="ls-feature__frame">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '700,1000,1400', sizes: '(min-width: 990px) 50vw, 100vw' }}
+        {%- elsif p != blank and p.featured_image != blank -%}
+          {{ p.featured_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '700,1000,1400', sizes: '(min-width: 990px) 50vw, 100vw', alt: p.title }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="ls-feature__body ls-reveal ls-reveal--{% if section.settings.layout == 'image_right' %}left{% else %}right{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}<p class="ls-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="ls-h2">{{ section.settings.heading }}</h2>
+      <div class="ls-feature__text">{{ section.settings.text }}</div>
+      {%- if section.blocks.size > 0 -%}
+        <ul class="ls-feature__points">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}><span class="ls-check" aria-hidden="true"></span>{{ block.settings.text }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      <div class="ls-feature__cta">
+        {%- if p != blank -%}
+          <a href="{{ p.url }}" class="ls-btn ls-btn--primary">{{ section.settings.button_label | default: 'View product' }}</a>
+          {%- if section.settings.show_price -%}<span class="ls-feature__price">from {{ p.price_min | money }}</span>{%- endif -%}
+        {%- elsif section.settings.button_link != blank -%}
+          <a href="{{ section.settings.button_link }}" class="ls-btn ls-btn--primary">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "LS Feature block",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product (uses its image, price, link)" },
+    { "type": "image_picker", "id": "image", "label": "Image override (optional)" },
+    { "type": "select", "id": "layout", "label": "Layout", "default": "image_left", "options": [ { "value": "image_left", "label": "Image left" }, { "value": "image_right", "label": "Image right" } ] },
+    { "type": "select", "id": "tone", "label": "Background tint", "default": "navy", "options": [ { "value": "navy", "label": "Navy tint" }, { "value": "green", "label": "Green tint" }, { "value": "white", "label": "White" } ] },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Benchmark Scientific" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Benchtop instruments, ready to ship." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Thermal cyclers, shakers, incubators, and homogenizers.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View product" },
+    { "type": "url", "id": "button_link", "label": "Button link (if no product)" },
+    { "type": "checkbox", "id": "show_price", "label": "Show 'from' price", "default": true }
+  ],
+  "blocks": [ { "type": "point", "name": "Bullet", "limit": 5, "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "Ships in original packaging" } ] } ],
+  "presets": [ { "name": "LS Feature block" } ]
+}
+{% endschema %}
