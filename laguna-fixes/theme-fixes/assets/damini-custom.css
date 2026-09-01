@@ -1,0 +1,29 @@
+/* Laguna Scientific — custom overrides (rewritten 2026-08-31)
+   Previous file removed except rules that still do something. The hand-coded
+   homepage carousel, the global <button> reset, and the fixed-width nav hack
+   are gone. */
+
+/* Product images: photos are on white backgrounds with varying aspect ratios.
+   Contain, don't crop. */
+.card .media.media--hover-effect > img:only-child,
+.card-wrapper .media.media--hover-effect > img:only-child {
+  object-fit: contain;
+  background-color: #fff;
+}
+
+/* Long spec-style titles: clamp to 3 lines so grid rows stay aligned.
+   Full title is on the product page. */
+.card__heading .full-unstyled-link {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Quantity label + input on one row on the product page. */
+.product-form__quantity .form__label {
+  margin-right: 1.5rem;
+}
+
+/* Phone/email in announcement bar should look tappable on mobile. */
+.announcement-bar__link { text-decoration: underline; }

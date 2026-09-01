@@ -1,0 +1,319 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image_2": "shopify://shop_images/2.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "value_prop": {
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lab consumables, PPE, and benchtop equipment. One supplier.",
+            "heading_size": "h1"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pipette tips, tubes, gloves, cell culture plastics, and Benchmark Scientific instruments for research, clinical, and industrial labs. Ordering for a department or facility? Call <strong>866-9-LAGUNA (952-4862)</strong> for volume pricing.</p>"
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop gloves & PPE",
+            "button_link": "shopify://collections/gloves",
+            "button_style_secondary": false,
+            "button_label_2": "Shop lab supplies",
+            "button_link_2": "shopify://collections/all",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 32
+      }
+    },
+    "shop_by_category": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gloves"
+          }
+        },
+        "c2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "personal-protection-products"
+          }
+        },
+        "c3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "liquid-handling"
+          }
+        },
+        "c4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tubes"
+          }
+        },
+        "c5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cell-culture-products"
+          }
+        },
+        "c6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "molecular-biology"
+          }
+        },
+        "c7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lab-essentials"
+          }
+        },
+        "c8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "equipment"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "settings": {
+        "title": "Shop by category",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_gloves": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Gloves & PPE",
+        "heading_size": "h2",
+        "description": "<p>Nitrile, latex, and neoprene gloves by the case. Isolation gowns, bouffant caps, and lab PPE.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "gloves",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_liquid_handling": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Pipette tips & liquid handling",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "liquid-handling",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-2",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "trust_bar": {
+      "type": "multicolumn",
+      "blocks": {
+        "t1": {
+          "type": "column",
+          "settings": {
+            "title": "Talk to a person",
+            "text": "<p>866-9-LAGUNA (952-4862)<br>International 1-949-363-0379<br>info@lagunascientific.com</p>",
+            "link_label": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "t2": {
+          "type": "column",
+          "settings": {
+            "title": "Volume & institutional orders",
+            "text": "<p>Ordering for a lab, hospital, or university? Request a quote for case quantities and recurring orders.</p>",
+            "link_label": "Request a quote",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "t3": {
+          "type": "column",
+          "settings": {
+            "title": "Secure checkout",
+            "text": "<p>Visa, Mastercard, American Express, Discover, PayPal, and Shop Pay.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "t4": {
+          "type": "column",
+          "settings": {
+            "title": "Benchmark Scientific equipment",
+            "text": "<p>Thermal cyclers, incubators, shakers, centrifuges, and homogenizers from an authorized source.</p>",
+            "link_label": "Browse equipment",
+            "link": "shopify://collections/equipment"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_equipment": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Benchtop equipment",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "equipment",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-2",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "value_prop",
+    "shop_by_category",
+    "featured_gloves",
+    "featured_liquid_handling",
+    "trust_bar",
+    "featured_equipment"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_hDGAa3": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "footer"
+          }
+        },
+        "text_jgrwNb": {
+          "type": "text",
+          "settings": {
+            "heading": "Talk to Us",
+            "subtext": "<p>Toll-free: 866-9-LAGUNA (952-4862)</p><p>International: 1-949-363-0379</p><p>Fax: 1-949-363-0386</p>"
+          }
+        },
+        "text_JY4Uh4": {
+          "type": "text",
+          "settings": {
+            "heading": "Orders & quotes",
+            "subtext": "<p><a href=\"mailto:info@lagunascientific.com\">info@lagunascientific.com</a></p><p>Volume pricing and institutional purchase orders welcome. Email or call for a quote.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_hDGAa3",
+        "text_jgrwNb",
+        "text_JY4Uh4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "newsletter_enable": true,
+        "newsletter_heading": "New products and volume pricing, by email",
+        "enable_follow_on_shop": true,
+        "show_social": false,
+        "enable_country_selector": true,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 28,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
