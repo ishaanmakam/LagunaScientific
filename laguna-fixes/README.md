@@ -1,10 +1,9 @@
-# Laguna Scientific — storefront fixes (2026-08-31)
+# Laguna Scientific Consultant
 
-Apply everything to the DUPLICATE theme, not LassoART Working. Preview, then publish.
 
-## A. Theme files (Online Store → Themes → duplicate → Edit code)
+## A. Theme files 
 
-Paste each file over the existing one. The path is the file's location in the code editor.
+
 
 | File | What changed |
 |---|---|
