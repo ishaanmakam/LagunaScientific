@@ -1,43 +1,75 @@
-# Laguna Scientific Consultant
+# Laguna Scientific — Shopify storefront overhaul
+Consulting engagement, August 2026. Theme code, catalog tooling, and a record of what changed.
 
+## Repository layout
 
-## A. Theme files 
+```
+├── README.md            this file
+├── PROCEDURE.md         step-by-step application order, import settings, gotchas
+├── theme/
+│   ├── v1-fixes/        published Aug 31 — defect fixes, rebuilt homepage
+│   ├── v2-design/       typography, spacing, card styling, mega menu
+│   └── v3-animated/     custom sections: split hero, ticker, feature blocks, stats band
+├── tools/
+│   └── build_catalog_fixes.py   generates the import CSVs from a Shopify product export
+└── catalog/             git-ignored — client data, kept locally only
+```
 
+## Scope
 
+Audit and repair of lagunascientific.com (Shopify, Dawn 13.0.1 theme "LassoART Working") and the product catalog behind it. Work was staged on a duplicate theme, previewed, and published the same day. Catalog changes were applied by CSV import with product-history preserved.
 
-| File | What changed |
+## A. Theme
+
+The theme was stock Dawn with a thin custom layer: one CSS file, one JS file, and hand-coded HTML on the homepage. The custom layer was the source of most front-end defects.
+
+| Area | Before | After |
+|---|---|---|
+| Custom JS | Threw an uncaught error on every non-homepage load | Removed |
+| Custom CSS | Global `button` reset, fixed 1340px nav width, dead carousel rules, two syntax errors | Rewritten; only rules that still serve a purpose |
+| Homepage | Hardcoded image carousel with 2023 URLs; three "collections" containing one product each; featured grid pulled the first 10 items of "All" | Rebuilt from native sections: hero, value proposition, category tiles, Gloves & PPE grid, Pipette Tips grid, trust bar, Equipment grid |
+| Collection pages | Filtering off | Filtering on (vertical), 24 per page, quick-add |
+| Product pages | Vendor line on every product (all identical); no ordering guidance | Vendor line removed; bulk-order note under Add to Cart; "Volume pricing" and "Shipping & returns" tabs |
+| Header | Announcement bar static (two of three messages never shown); no sticky header | Rotates every 5s; phone and email tappable; sticky on scroll-up |
+| Footer | Policy links hidden; fax number typo | Policy links on; typo fixed; email block reframed around quotes and orders |
+| Site-wide | Placeholder social links left from the theme install, emitting `twitter:site @shopify` on every page | Cleared |
+| Navigation | "Cell Culture Products", "Personal Protection Products" | "Cell Culture", "PPE & Safety"; nav fits on one row |
+
+A new automated collection, **Gloves & PPE**, was created. The store had no parent collection for gloves or protective equipment; the nav headings were labels without a landing page.
+
+## B. Catalog
+
+Roughly 700 products at time of export.
+
+**Corrected**
+- One instrument priced two orders of magnitude too high (decimal error). Fixed.
+- Test products and $0-priced items that were live and purchasable. Set to draft.
+- 44 single-size and single-format listings (gloves, pipette tips) consolidated into 10 variant products. Old listings set to draft, not deleted; order history intact. 44 URL redirects added so indexed links resolve to the new products.
+- Collections that depended on the retired listings re-linked to the consolidated products.
+
+**Added**
+- SEO title and meta description on all active products (fewer than 1% had them before).
+- Product category assigned on the ~45% of products previously uncategorized.
+- Alt text on all product images that lacked it.
+- Collection titles that were product names renamed to category names.
+
+## C. Open items
+
+These require information the catalog doesn't contain.
+
+| Item | Owner |
 |---|---|
-| `assets/damini-custom.css` | Rewritten. Removes global `button` reset, fixed 1340px nav width, dead carousel styles, syntax errors. Adds 3-line title clamp on product cards. |
-| `assets/damini-customjs.js` | Emptied. Delete the asset entirely after removing its script tag. |
-| `layout/theme.liquid` | Line 30 (`damini-customjs.js` script tag) removed. Nothing else touched. |
-| `templates/index.json` | Homepage rebuilt: hero → value proposition + 2 CTAs → 8 category tiles → Gloves & PPE grid → Pipette tips grid → trust bar → Equipment grid. Hardcoded carousel and single-product "collections" removed. |
-| `templates/collection.json` | Filtering ON (vertical), 24/page, square images, quick-add on. |
-| `templates/product.json` | Vendor line removed (all products = "laguna scientific"). Adds bulk-order note under Add to cart, "Volume pricing" tab, "Shipping & returns" tab (pulls from page handle `shipping-returns` — create that page or the tab stays empty). Gift-card recipient form off. |
-| `sections/header-group.json` | Announcement bar rotates (5s), phone/email tappable, sticky header on scroll-up. |
-| `sections/footer-group.json` | Policy links ON, fax typo fixed, email block reframed as "Orders & quotes". |
-| `config/settings_data.json` | Placeholder social links (`facebook.com/shopify` etc.) cleared — this was emitting `twitter:site @shopify` on every page. Search shows prices. Cart is a drawer. |
+| Products with no description (Benchmark instruments first) | Manufacturer spec sheets |
+| Products with no image | Photography / manufacturer assets |
+| SKUs listed under two products at different prices | Pricing decision |
+| Tracked items showing "Sold out" | Restock, untrack, or allow backorder |
+| Cost per item not populated; margin reports read $0 | Finance |
+| Hero image has marketing text baked into the file | One clean product photo |
+| `shipping-returns` page referenced by the product-page tab | Policy text |
 
-**Collection handles in `index.json` are best guesses** from the nav labels: `gloves`, `personal-protection-products`, `liquid-handling`, `tubes`, `cell-culture-products`, `molecular-biology`, `lab-essentials`, `equipment`. Any tile that renders empty: open the customizer, click the block, pick the right collection. Two minutes.
+## D. Next phase
 
-**Then:** Themes → duplicate → "Version 16.0.0 available" → update. Re-paste `damini-custom.css` and the theme.liquid edit if the update reverts them (it will revert theme.liquid).
-
-## B. Catalog (Products → Import → check "Overwrite products with matching handles")
-
-Import in this order. Each file only touches the columns it contains.
-
-1. `01-urgent-fixes.csv` — delete the Note column first. Fixes the $653,460 thermal cycler, drafts 2 test products and 23 $0-priced items.
-2. `02-seo-titles-descriptions-categories.csv` — SEO title + meta description for 589 active products, Shopify product category for 315 uncategorized.
-3. `02b-image-alt-text.csv` — alt text on 423 images.
-4. `03-consolidated-products-NEW.csv` — 10 new variant products (4 glove lines, 6 pipette-tip lines) replacing 44 single-SKU listings.
-5. `03b-retire-old-listings.csv` — sets those 44 old listings to draft. Do NOT delete them; order history references them.
-6. `04-url-redirects.csv` — Online Store → Navigation → URL redirects → Import. 44 redirects so old links and Google results land on the new products.
-
-## C. Needs a human (no import)
-
-- `05-needs-description.csv` — 266 active products with no description. Benchmark Scientific instruments (T5000, D2400, B4000, H3565…) should get spec sheets copied from the manufacturer page.
-- `05b-needs-image.csv` — 104 active products with no image.
-- `05c-duplicate-skus.csv` — 116 rows where the same SKU is listed under two handles, often at different prices (e.g. 4031-AB-FAST at $32 and $25). Someone already started consolidating PCR plates/tubes and left both versions live. Pick one price per SKU, retire the other listing.
-- `05d-showing-sold-out.csv` — 18 tracked items at qty ≤ 0 showing "Sold out". Either restock, untrack, or set inventory policy to "continue".
-- `Cost per item` is empty on all 739 variants. Fill it and the admin ABC / margin reports start working.
-- Hero image `shop_images/2.jpg` has "Your Reliable Partner in Cell Culture" baked in. Needs a replacement image (or a plain product photo) so the headline can live in the theme where it can be changed.
-- Create a `shipping-returns` page so the product-page tab has content.
+- Visual refresh: typography, spacing, card styling, mega menu with category images, animated homepage sections. Built; staged on a draft theme.
+- Update to Dawn 16.0 from a fresh duplicate.
+- Collection descriptions for the parent categories and product descriptions for Benchmark instruments.
+- Google Merchant Center listing check, Search Console sitemap submission.
