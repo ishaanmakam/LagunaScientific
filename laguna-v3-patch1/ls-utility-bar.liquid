@@ -1,0 +1,18 @@
+{{ 'ls-sections.css' | asset_url | stylesheet_tag }}
+<div class="ls-utility">
+  <div class="page-width ls-utility__inner">
+    <span class="ls-utility__text">{{ section.settings.text }}</span>
+    <a class="ls-utility__phone" href="tel:{{ section.settings.phone_tel }}">{{ section.settings.phone_display }}</a>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "LS Utility bar",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "For questions or to place an order" },
+    { "type": "text", "id": "phone_display", "label": "Phone (shown)", "default": "866-9-LAGUNA (952-4862)" },
+    { "type": "text", "id": "phone_tel", "label": "Phone (tel: digits)", "default": "8669524862" }
+  ]
+}
+{% endschema %}

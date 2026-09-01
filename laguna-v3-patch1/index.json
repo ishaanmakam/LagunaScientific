@@ -1,0 +1,375 @@
+{
+  "sections": {
+    "ls_hero": {
+      "type": "ls-hero",
+      "blocks": {
+        "ch1": {
+          "type": "chip",
+          "settings": {
+            "label": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "ch1"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/2.jpg",
+        "image_focus": "100% 50%",
+        "tone": "navy",
+        "eyebrow": "Lab supplies \u00b7 PPE \u00b7 Equipment",
+        "heading": "Everything your lab orders, from one supplier.",
+        "text": "<p>Cell culture plastics, pipette tips, tubes, gloves, and Benchmark Scientific instruments. Case quantities and quotes for research, clinical, and industrial labs.</p>",
+        "button_label": "Shop gloves & PPE",
+        "button_link": "shopify://collections/gloves-ppe",
+        "button_label_2": "Browse all products",
+        "button_link_2": "shopify://collections/all"
+      }
+    },
+    "ls_marquee": {
+      "type": "ls-marquee",
+      "blocks": {
+        "m1": {
+          "type": "item",
+          "settings": {
+            "label": "Cell culture",
+            "link": "shopify://collections/cell-culture-products"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "label": "Pipette tips",
+            "link": "shopify://collections/pipette-tips"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "label": "Tubes",
+            "link": "shopify://collections/tubes"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "label": "Gloves & PPE",
+            "link": "shopify://collections/gloves-ppe"
+          }
+        },
+        "m5": {
+          "type": "item",
+          "settings": {
+            "label": "Molecular biology",
+            "link": "shopify://collections/molecular-biology"
+          }
+        },
+        "m6": {
+          "type": "item",
+          "settings": {
+            "label": "Face masks",
+            "link": "shopify://collections/face-mask"
+          }
+        },
+        "m7": {
+          "type": "item",
+          "settings": {
+            "label": "Serological pipettes",
+            "link": "shopify://collections/serological-pipettes"
+          }
+        },
+        "m8": {
+          "type": "item",
+          "settings": {
+            "label": "Equipment",
+            "link": "shopify://collections/equipment"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8"
+      ],
+      "settings": {
+        "tone": "green",
+        "speed": 35
+      }
+    },
+    "shop_by_category": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cell-culture-products"
+          }
+        },
+        "c2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "molecular-biology"
+          }
+        },
+        "c3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pipette-tips"
+          }
+        },
+        "c4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "equipment"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "title": "Shop by category",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ls_feature_equipment": {
+      "type": "ls-feature",
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Gradient thermal cycler, 96-well and 384-well block options"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Sold with Benchmark's standard warranty"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Call for institutional pricing and multi-unit orders"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "product": "thermal-cycler",
+        "layout": "image_left",
+        "tone": "navy",
+        "eyebrow": "Benchmark Scientific",
+        "heading": "Benchtop instruments, without the distributor markup.",
+        "text": "<p>Thermal cyclers, shaking incubators, centrifuges, and homogenizers from Benchmark Scientific. Ordered direct, shipped in original packaging.</p>",
+        "button_label": "View the TC 9639 thermal cycler",
+        "show_price": true
+      }
+    },
+    "featured_gloves": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Gloves & PPE",
+        "heading_size": "h2",
+        "description": "<p>Nitrile, latex, and neoprene gloves by the case. Isolation gowns, bouffant caps, and lab PPE.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "gloves-ppe",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ls_stats": {
+      "type": "ls-stats",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "number": "600",
+            "suffix": "+",
+            "label": "Lab products",
+            "text": "Consumables, PPE, and equipment"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "number": "9",
+            "suffix": "",
+            "label": "Product categories",
+            "text": "From cell culture to DNA sequencing"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "number": "2",
+            "suffix": "",
+            "label": "Ways to order",
+            "text": "Online checkout, or a quote for case quantities"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "number": "6",
+            "suffix": "",
+            "label": "Payment methods",
+            "text": "Visa, Mastercard, Amex, Discover, PayPal, Shop Pay"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "heading": "Ordering for a lab, hospital, or university?",
+        "tone": "navy"
+      }
+    },
+    "featured_liquid_handling": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Pipette tips",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "pipette-tips",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-2",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ls_feature_gloves": {
+      "type": "ls-feature",
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "8 mil nitrile, 12-inch cuff, powder-free"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Sizes S through XXL on one product page"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "500 gloves per case"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "product": "heavy-duty-nitrile-exam-gloves-8-mil-500-case",
+        "layout": "image_right",
+        "tone": "green",
+        "eyebrow": "Gloves & PPE",
+        "heading": "Heavy-duty nitrile, by the case.",
+        "text": "<p>Exam-grade nitrile for labs handling solvents, samples, and cleanup. Pick a size, set a quantity, check out or request a quote.</p>",
+        "button_label": "Shop heavy-duty nitrile gloves",
+        "show_price": true
+      }
+    },
+    "featured_equipment": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Benchtop equipment",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "equipment",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-2",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "ls_hero",
+    "ls_marquee",
+    "shop_by_category",
+    "ls_feature_equipment",
+    "featured_gloves",
+    "ls_stats",
+    "featured_liquid_handling",
+    "ls_feature_gloves",
+    "featured_equipment"
+  ]
+}
